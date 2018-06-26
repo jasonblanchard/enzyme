@@ -4,6 +4,7 @@ import ReactAddons from 'react/addons';
 // eslint-disable-next-line import/no-unresolved, import/extensions
 import ReactContext from 'react/lib/ReactContext';
 import values from 'object.values';
+import { isValidElement } from 'react-is';
 import { EnzymeAdapter } from 'enzyme';
 import {
   propFromEvent,
@@ -249,7 +250,7 @@ class ReactThirteenAdapter extends EnzymeAdapter {
   }
 
   isValidElement(element) {
-    return React.isValidElement(element);
+    return isValidElement(element);
   }
 
   createElement(...args) {
