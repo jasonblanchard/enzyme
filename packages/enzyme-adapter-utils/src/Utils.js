@@ -1,3 +1,5 @@
+import flat from 'array.prototype.flat';
+
 import createMountWrapper from './createMountWrapper';
 import createRenderWrapper from './createRenderWrapper';
 
@@ -121,10 +123,7 @@ export function isArrayLike(obj) {
 export function flatten(arrs) {
   // optimize for the most common case
   if (Array.isArray(arrs)) {
-    return arrs.reduce(
-      (flatArrs, item) => flatArrs.concat(isArrayLike(item) ? flatten(item) : item),
-      [],
-    );
+    return flat(arrs, Infinity);
   }
 
   // fallback for arbitrary iterable children
